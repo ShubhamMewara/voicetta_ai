@@ -1,44 +1,25 @@
 "use client";
+
 import {
   ActivityIcon,
-  PhoneCallIcon,
-  PhoneIcon,
   HeadsetIcon,
   ViewIcon,
-  VoicemailIcon,
   DollarSignIcon,
-  UserIcon,
 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
 import LogInButton from "./login-btn";
-import { useSession } from "next-auth/react";
 
 const NavBar = () => {
   const pathname = usePathname();
-  const session = useSession();
-  // @ts-ignore
-  const admin = session.data?.user?.admin;
 
   let navItems = [
     { href: "/dashboard", icon: ViewIcon, label: "Overview" },
     { href: "/assistants", icon: ActivityIcon, label: "Assistants" },
-    { href: "/call-logs", icon: PhoneCallIcon, label: "Call Logs" },
-    { href: "/phone-numbers", icon: PhoneIcon, label: "Phone Numbers" },
     { href: "/billing", icon: DollarSignIcon, label: "Billing" },
     { href: "/support", icon: HeadsetIcon, label: "Support" },
   ];
-
-  if (admin) {
-    navItems = navItems.filter(
-      (item) =>
-        item.label !== "Assistants" &&
-        item.label !== "Call Logs" &&
-        item.label !== "Phone Numbers"
-    );
-    navItems.push({ href: "/admin", icon: UserIcon, label: "Admin" });
-  }
 
   return (
     <div className="flex flex-col justify-between h-screen">
@@ -69,7 +50,6 @@ const NavBar = () => {
         </aside>
       </div>
       <div className="flex items-center m-4 ">
-        {/* <UserIcon className="h-8 w-8 mr-2" /> */}
         <LogInButton />
       </div>
     </div>
