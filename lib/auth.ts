@@ -3,21 +3,6 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import db from "@/prisma/index";
 import type { Adapter } from "next-auth/adapters";
 import { SessionStrategy } from "next-auth";
-import { JWTPayload, SignJWT, importJWK } from "jose";
-
-const generateJWT = async (payload: JWTPayload) => {
-  const secret = process.env.JWT_SECRET || "secret";
-
-  const jwk = await importJWK({ k: secret, alg: "HS256", kty: "oct" });
-
-  const jwt = await new SignJWT(payload)
-    .setProtectedHeader({ alg: "HS256" })
-    .setIssuedAt()
-    .setExpirationTime("365d")
-    .sign(jwk);
-
-  return jwt;
-};
 
 export const authOptions = {
   adapter: PrismaAdapter(db) as Adapter,

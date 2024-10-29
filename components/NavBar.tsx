@@ -5,6 +5,7 @@ import {
   HeadsetIcon,
   ViewIcon,
   DollarSignIcon,
+  Podcast,
 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -16,6 +17,7 @@ const NavBar = () => {
 
   let navItems = [
     { href: "/dashboard", icon: ViewIcon, label: "Overview" },
+    { href: "/realtime", icon: Podcast, label: "Realtime" },
     { href: "/assistants", icon: ActivityIcon, label: "Assistants" },
     { href: "/billing", icon: DollarSignIcon, label: "Billing" },
     { href: "/support", icon: HeadsetIcon, label: "Support" },

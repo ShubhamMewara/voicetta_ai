@@ -1,8 +1,6 @@
 "use server";
 import axios from "axios";
 import { Conversations, WebCall } from "./types";
-import prisma from "@/prisma";
-import bcrypt from "bcrypt";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./auth";
 
@@ -56,32 +54,4 @@ export async function getPhone() {
     console.error("Error fetching phone number:", error);
     return [];
   }
-}
-
-export async function createUser({
-  name,
-  email,
-  password,
-  private_key,
-  public_key,
-  multiFactor,
-}: {
-  name: string;
-  email: string;
-  password: string;
-  private_key: string;
-  public_key: string;
-  multiFactor: string;
-}) {
-  const hashedPassword = await bcrypt.hash(password, 10);
-  await prisma.user.create({
-    data: {
-      name,
-      email,
-      password: hashedPassword,
-      PRIVATE_KEY: private_key,
-      PUBLIC_KEY: public_key,
-      multiFactor
-    },
-  });
 }
