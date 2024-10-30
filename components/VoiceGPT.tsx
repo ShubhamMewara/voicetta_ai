@@ -143,9 +143,14 @@ function RealtimeVoiceTranscription() {
           Stop Recording
         </Button>
       </div>
-      <div>
+      <div className="mt-8 space-y-2 text-lg">
         {receivedText.map((text, index) => (
-          <p key={index}>{text}</p>
+          <p 
+            key={index}
+            className="p-4 rounded-lg bg-[#ffffff08] border border-white/5 text-white"
+          >
+            {text}
+          </p>
         ))}
       </div>
     </div>
