@@ -82,7 +82,7 @@ export const Header = forwardRef<
             height={100}
           />
           <div className="text-md font-medium text-gray-800 dark:text-white">
-            Voicetta
+            AD Voice
           </div>
         </Link>
         <ul role="list" className="flex w-full items-center gap-4">

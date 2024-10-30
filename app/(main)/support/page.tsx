@@ -10,7 +10,7 @@ export default function SupportPage() {
             <p className="text-xl font-bold ">Phone: +91 7781041905</p>
           </div>
           <div className="bg-[#ffffff08] hover:bg-[#ffffff0e] duration-200 border border-white/5 rounded-2xl shadow-lg shadow-black/10 p-6 flex flex-col justify-between">
-            <Link href="mailto:hello@voicetta.com">
+            <Link href="mailto:pranav.rajveer@alterdomus.com">
               <p className="text-xl font-bold">Email: pranav.rajveer@alterdomus.com</p>
             </Link>
           </div>
