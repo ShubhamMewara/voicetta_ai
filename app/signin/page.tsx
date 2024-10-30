@@ -14,9 +14,9 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const session = useSession();
-  async function signInWithGoogle() {
+  async function signInWithGithub() {
     try {
-      await signIn("google");
+      await signIn("github");
     } catch (error) {
       console.error("Error signing in with Google:", error);
     }

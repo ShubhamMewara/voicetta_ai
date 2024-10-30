@@ -46,7 +46,7 @@ function RealtimeVoiceTranscription() {
         turn_detection: { type: "server_vad" },
         input_audio_transcription: { model: "whisper-1" },
         voice: "alloy",
-        instructions : "Alawys speak in english"
+        instructions : "Always speak in the English"
       },
     };
     return configMessage;
