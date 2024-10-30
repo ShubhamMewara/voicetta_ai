@@ -6,13 +6,13 @@ const page = () => {
     <div className="flex flex-col items-center justify-center min-h-[100dvh] px-4 md:px-6 py-12 md:py-24">
       <div className="max-w-xl text-center space-y-4">
         <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground">
-          Welcome to Voicetta
+          Welcome to AD Voice
         </h1>
         <p className="text-lg md:text-xl text-primary-foreground">
-          Voicetta is a powerful voice AI assistant that can help you with a
+          AD Voice is a powerful voice AI assistant that can help you with a
           variety of tasks.
           <br />
-          Voicetta is here to make your life easier.
+          AD Voice is here to make your life easier.
         </p>
         <div className="flex justify-center gap-4">
           <Link

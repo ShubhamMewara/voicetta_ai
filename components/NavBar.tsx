@@ -19,7 +19,7 @@ const NavBar = () => {
     { href: "/dashboard", icon: ViewIcon, label: "Overview" },
     { href: "/realtime", icon: Podcast, label: "Realtime" },
     { href: "/assistants", icon: ActivityIcon, label: "Assistants" },
-    { href: "/billing", icon: DollarSignIcon, label: "Billing" },
+    // { href: "/billing", icon: DollarSignIcon, label: "Billing" },
     { href: "/support", icon: HeadsetIcon, label: "Support" },
   ];
 

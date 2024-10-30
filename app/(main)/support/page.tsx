@@ -7,11 +7,11 @@ export default function SupportPage() {
         <h2 className="text-2xl font-bold mb-8">Contact Us</h2>
         <div className="grid grid-cols-2 gap-8">
           <div className="bg-[#ffffff08] hover:bg-[#ffffff0e] duration-200 border border-white/5 rounded-2xl shadow-lg shadow-black/10 p-6 flex flex-col justify-between">
-            <p className="text-xl font-bold ">Phone: +48 884 604 292</p>
+            <p className="text-xl font-bold ">Phone: +91 7781041905</p>
           </div>
           <div className="bg-[#ffffff08] hover:bg-[#ffffff0e] duration-200 border border-white/5 rounded-2xl shadow-lg shadow-black/10 p-6 flex flex-col justify-between">
             <Link href="mailto:hello@voicetta.com">
-              <p className="text-xl font-bold">Email: hello@voicetta.com</p>
+              <p className="text-xl font-bold">Email: pranav.rajveer@alterdomus.com</p>
             </Link>
           </div>
         </div>
