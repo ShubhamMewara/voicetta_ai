@@ -36,6 +36,7 @@ import {
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 const data = {
   user: {
     name: "shadcn",
@@ -67,11 +68,18 @@ export function AppSidebar() {
   const session = useSession();
   return (
     <Sidebar collapsible="icon" variant="inset">
-      <SidebarHeader className="flex flex-row text-2xl font-bold p-4">
+      <SidebarHeader className="flex flex-row text-2xl font-bold p-4 ">
         AD{" "}
         <span className="inline group-data-[collapsible=icon]:hidden">
           Voice
         </span>
+        <Image
+        src="/images/logo.png"
+        alt={""}
+        width={50}
+        height={50}
+        className="size-8 object-cover group-data-[collapsible=icon]:hidden"
+        />
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup className="gap-6">
@@ -155,7 +163,7 @@ export function AppSidebar() {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator className="bg-[#63beb7]" />
                 <DropdownMenuItem
-                  className="focus:bg-[#18282a] focus:text-[#63beb7]"
+                  className="focus:bg-[#18282a] focus:text-[#63beb7] cursor-pointer"
                   onClick={() => signOut()}
                 >
                   <LogOut />

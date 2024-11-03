@@ -228,8 +228,8 @@ function RealtimeVoiceTranscription() {
           )}
           <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
             <Button
-              variant="ghost"
-              className="text-green-400 bg-green-500/10 hover:bg-green-500/20 transition-all duration-300 hover:scale-105"
+              variant="outline"
+              className="text-green-400 bg-green-500/10 hover:bg-green-500/20 cursor-default transition-all duration-300 hover:scale-105"
             >
               {formState === formStates.READY_TO_START && "Give it a try!"}
               {formState === formStates.WORKING && "Connecting..."}
