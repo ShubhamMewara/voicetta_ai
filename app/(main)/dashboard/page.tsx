@@ -2,7 +2,7 @@ import CurvedlineChart from "@/components/Chart";
 
 export default function DashBoardPage() {
   return (
-    <div className="flex flex-col bg-[#0e0e0e] overflow-y-auto h-[100vh]">
+    <div className="flex flex-col bg-[#0e0e0e] min-h-screen">
       <main className="flex-1 bg-[#ffffff07] text-white p-8 m-8 rounded-2xl mr-5">
         <h2 className="text-2xl font-bold mb-8">Overview</h2>
         <div className="grid grid-cols-2 gap-8">
