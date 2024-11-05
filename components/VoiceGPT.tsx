@@ -6,6 +6,7 @@ import { Recorder } from "./recorder";
 import { LowLevelRTClient, SessionUpdateMessage } from "rt-client";
 import { Button } from "./ui/button";
 import { Mic } from "lucide-react";
+import Image from "next/image";
 
 const SESSION_UPDATE_MESSAGE: SessionUpdateMessage = {
   type: "session.update",
@@ -194,12 +195,12 @@ function RealtimeVoiceTranscription() {
         <div className="relative">
           <div
             className={`w-48 h-48 rounded-full flex items-center justify-center transition-all duration-300 ${
-              isListening ? "bg-green-500/20" : "bg-green-500/10"
+              isListening ? "bg-orange-500/20" : "bg-orange-500/10"
             }`}
           >
             <div
               className={`w-40 h-40 rounded-full flex items-center justify-center transition-all duration-300 ${
-                isListening ? "bg-green-500/30" : "bg-green-500/20"
+                isListening ? "bg-orange-500/30" : "bg-orange-500/20"
               }`}
             >
               <Button
@@ -207,21 +208,26 @@ function RealtimeVoiceTranscription() {
                 size="icon"
                 className={`w-32 h-32 rounded-full transition-all duration-300 ${
                   isListening
-                    ? "bg-green-500 text-white pulse z-10 hover:bg-green-300"
-                    : "bg-green-500/30 text-green-400 hover:bg-green-500/40 z-0"
+                    ? "bg-orange-500 text-white pulse z-10 hover:bg-orange-300"
+                    : "bg-orange-500/30 text-orange-400 hover:bg-orange-500/40 z-0"
                 }`}
                 onClick={handleMicClick}
               >
-                <Mic className="w-24 h-24"/>
+                <Image
+                src="/images/logo.png"
+                alt="Logo"
+                width={30}
+                height={30}
+                />
                 <span className="sr-only">Toggle microphone</span>
               </Button>
             </div>
           </div>
           {isListening && (
             <>
-              <div className="z-[-1] absolute inset-0 rounded-full bg-green-500/10 wave"></div>
+              <div className="z-[-1] absolute inset-0 rounded-full bg-orange-500/10 wave"></div>
               <div
-                className="absolute inset-0 rounded-full bg-green-500/10 wave"
+                className="absolute inset-0 rounded-full bg-orange-500/10 wave"
                 style={{ animationDelay: "0.5s" }}
               ></div>
             </>
@@ -229,7 +235,7 @@ function RealtimeVoiceTranscription() {
           <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
             <Button
               variant="outline"
-              className="text-green-400 bg-green-500/10 hover:bg-green-500/20 cursor-default transition-all duration-300 hover:scale-105"
+              className="text-orange-400 bg-orange-500/10 hover:bg-orange-500/20 cursor-default transition-all duration-300 hover:scale-105"
             >
               {formState === formStates.READY_TO_START && "Give it a try!"}
               {formState === formStates.WORKING && "Connecting..."}

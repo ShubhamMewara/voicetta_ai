@@ -90,7 +90,7 @@ export function AppSidebar() {
                   <SidebarMenuButton
                     asChild
                     className={`p-6 ${
-                      pathname === item.url ? "bg-[#18282a] text-[#63beb7]" : ""
+                      pathname === item.url ? "bg-[#7e361a] text-[#d6c3be]" : ""
                     }`}
                     tooltip={item.title}
                   >
@@ -163,7 +163,7 @@ export function AppSidebar() {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator className="bg-[#63beb7]" />
                 <DropdownMenuItem
-                  className="focus:bg-[#18282a] focus:text-[#63beb7] cursor-pointer"
+                  className="focus: bg-[#7e361a] focus: text-[#d6c3be] cursor-pointer"
                   onClick={() => signOut()}
                 >
                   <LogOut />
