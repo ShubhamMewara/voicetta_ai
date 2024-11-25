@@ -25,7 +25,7 @@ const formStates = {
 
 function RealtimeVoiceTranscription() {
   const [formState, setFormState] = useState<
-    typeof formStates[keyof typeof formStates]
+    (typeof formStates)[keyof typeof formStates]
   >(formStates.READY_TO_START);
   const [receivedText, setReceivedText] = useState<string[]>([]);
   const [aiText, setAiText] = useState<string | null>(null);
@@ -119,7 +119,9 @@ function RealtimeVoiceTranscription() {
 
   const processAudioRecordingBuffer = (data: Buffer) => {
     const uint8Array = new Uint8Array(data);
-    const concatenated = new Uint8Array(buffer.current.length + uint8Array.length);
+    const concatenated = new Uint8Array(
+      buffer.current.length + uint8Array.length
+    );
     concatenated.set(buffer.current);
     concatenated.set(uint8Array, buffer.current.length);
     buffer.current = concatenated;
@@ -147,7 +149,9 @@ function RealtimeVoiceTranscription() {
 
     if (startRecording) {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        const stream = await navigator.mediaDevices.getUserMedia({
+          audio: true,
+        });
         audioRecorder.current.start(stream);
         recordingActive.current = true;
       } catch (error) {
@@ -212,7 +216,7 @@ function RealtimeVoiceTranscription() {
                 }`}
                 onClick={handleMicClick}
               >
-                <Mic className="w-24 h-24"/>
+                <Mic className="w-24 h-24" />
                 <span className="sr-only">Toggle microphone</span>
               </Button>
             </div>
