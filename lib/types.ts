@@ -1,93 +1,97 @@
-export type Voice = {
-  voiceId: string;
-  provider: string;
-};
+export enum ToolResultDirection {
+  TO_SERVER = 1,
+  TO_CLIENT = 2,
+}
 
-export type Message = {
-  role: string;
+export interface Tool {
+  target: Function;
+  schema: any;
+}
+
+export interface RTToolCall {
+  tool_call_id: string;
+  previous_id: string;
+}
+
+export interface SearchParams {
+  query: string;
+}
+
+export interface GroundingParams {
+  sources: string[];
+}
+
+export type GroundingFile = {
+  id: string;
+  name: string;
   content: string;
 };
 
-export type Model = {
-  model: string;
-  messages: Message[];
-  provider: string;
-  temperature: number;
-};
-
-export type Conversation = {
+export type HistoryItem = {
   id: string;
-  orgId: string;
-  name: string;
-  voice: Voice;
-  createdAt: string;
-  updatedAt: string;
-  model: Model;
-  recordingEnabled: boolean;
-  firstMessage: string;
-  voicemailMessage: string;
-  endCallMessage: string;
-  clientMessages: string[];
-  serverMessages: string[];
-  endCallPhrases: string[];
-  isServerUrlSecretSet: boolean;
+  transcript: string;
+  groundingFiles: GroundingFile[];
 };
 
-export type Conversations = Conversation[];
-
-export type CallMessage = {
-  role: string;
-  time: number;
-  message: string;
-  secondsFromStart: number;
-  source?: string;
-  endTime?: number;
-};
-
-export type CostBreakdown = {
-  stt: number;
-  llm: number;
-  tts: number;
-  vapi: number;
-  total: number;
-  llmPromptTokens: number;
-  llmCompletionTokens: number;
-  analysisCostBreakdown: {
-      summary: number;
-      structuredData: number;
-      successEvaluation: number;
-      summaryPromptTokens: number;
-      summaryCompletionTokens: number;
-      structuredDataPromptTokens: number;
-      successEvaluationPromptTokens: number;
-      structuredDataCompletionTokens: number;
-      successEvaluationCompletionTokens: number;
+export type SessionUpdateCommand = {
+  type: "session.update";
+  session: {
+    turn_detection?: {
+      type: "server_vad" | "none";
+    };
+    input_audio_transcription?: {
+      model: "whisper-1";
+    };
   };
 };
 
-export type Analysis = {
-  summary: string;
-  successEvaluation: string;
+export type InputAudioBufferAppendCommand = {
+  type: "input_audio_buffer.append";
+  audio: string;
 };
 
-export type WebCall = {
-  id: string;
-  assistantId: string;
+export type InputAudioBufferClearCommand = {
+  type: "input_audio_buffer.clear";
+};
+
+export type Message = {
   type: string;
-  startedAt: string;
-  endedAt: string;
+};
+
+export type ResponseAudioDelta = {
+  type: "response.audio.delta";
+  delta: string;
+};
+
+export type ResponseAudioTranscriptDelta = {
+  type: "response.audio_transcript.delta";
+  delta: string;
+};
+
+export type ResponseInputAudioTranscriptionCompleted = {
+  type: "conversation.item.input_audio_transcription.completed";
+  event_id: string;
+  item_id: string;
+  content_index: number;
   transcript: string;
-  recordingUrl: string;
-  summary: string;
-  createdAt: string;
-  updatedAt: string;
-  orgId: string;
-  cost: number;
-  webCallUrl: string;
-  status: string;
-  endedReason: string;
-  messages: CallMessage[];
-  stereoRecordingUrl: string;
-  costBreakdown: CostBreakdown;
-  analysis: Analysis;
+};
+
+export type ResponseDone = {
+  type: "response.done";
+  event_id: string;
+  response: {
+    id: string;
+    output: { id: string; content?: { transcript: string; type: string }[] }[];
+  };
+};
+
+export type ExtensionMiddleTierToolResponse = {
+  type: "extension.middle_tier_tool.response";
+  previous_item_id: string;
+  tool_name: string;
+  tool_result: string; // JSON string that needs to be parsed into ToolResult
+};
+
+export type ToolResult = {
+  sources: { chunk_id: string; title: string; chunk: string }[];
 };

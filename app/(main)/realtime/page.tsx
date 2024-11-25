@@ -1,3 +1,4 @@
+import App from "@/components/App";
 import RealtimeVoiceTranscription from "@/components/VoiceGPT";
 
 export default function RealtimePage() {
@@ -7,6 +8,7 @@ export default function RealtimePage() {
         <h2 className="text-2xl font-bold mb-8">GPT-4o RealTime Voice</h2>
         <div className="bg-[#ffffff07] border border-white/5 rounded-2xl shadow-lg shadow-black/10 flex flex-col justify-center flex-1 min-w-[300px] p-4 gap-4 min-h-[70vh]">
           <RealtimeVoiceTranscription />
+          {/* <App /> */}
         </div>
       </main>
     </div>
