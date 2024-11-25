@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function SupportPage() {
   return (
-    <div className="flex flex-col bg-[#0e0e0e] min-h-[70vh]">
+    <div className="flex flex-col bg-[#0e0e0e] min-h-[95vh]">
       <main className="flex-1 bg-[#ffffff07] text-white p-8 m-8 rounded-2xl mr-5 min-h-[70vh]">
         <h2 className="text-2xl font-bold mb-8">Contact Us</h2>
         <div className="grid grid-cols-2 gap-8">

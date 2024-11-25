@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -5,9 +6,19 @@ const page = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-[100dvh] px-4 md:px-6 py-12 md:py-24">
       <div className="max-w-xl text-center space-y-4">
+        <div className="inline-flex space-x-2 mt-2">
         <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground">
           Welcome to AD Voice
         </h1>
+        <Image
+        src="/images/logo.png"
+        alt={""}
+        width={50}
+        height={50}
+        className="size-12 object-cover"
+        />
+        </div>
+      
         <p className="text-lg md:text-xl text-primary-foreground">
           AD Voice is a powerful voice AI assistant that can help you with a
           variety of tasks.

@@ -12,9 +12,9 @@ export default async function RootLayout({
   return (
     <SidebarProvider defaultOpen={defaultOpen}>
       <AppSidebar />
+      <SidebarTrigger className="mt-6"/>
       <main className="w-full">
         <div>
-          <SidebarTrigger className="mx-4" />
           {children}
         </div>
       </main>
