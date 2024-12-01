@@ -89,7 +89,7 @@ export default function MicComponent() {
         <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
           <Button
             variant="ghost"
-            className="text-orange-400 bg-orange-500/10 hover:bg-orange-500/20 transition-all duration-300 hover:scale-105"
+            className="text-white bg-[#da2d2e]/50 hover:bg-[#da2d2e]/50 transition-all duration-300 hover:scale-105"
           >
             Give it a try!
           </Button>
