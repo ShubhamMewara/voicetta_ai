@@ -212,8 +212,8 @@ function RealtimeVoiceTranscription() {
                 size="icon"
                 className={`w-32 h-32 rounded-full transition-all duration-300 ${
                   isListening
-                    ? "bg-red-700 text-white pulse z-10 hover:bg-red-300"
-                    : "bg-red-700/30 text-red-400 hover:bg-red-700/40 z-0"
+                    ? "bg-white text-white pulse z-10 hover:bg-red-300"
+                    : "bg-white text-red-400 hover:bg-red-700/40 z-0"
                 }`}
                 onClick={handleMicClick}
               >
