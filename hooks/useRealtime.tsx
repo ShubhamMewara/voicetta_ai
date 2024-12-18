@@ -74,15 +74,11 @@ export default function useRealTime({
         turn_detection: {
           type: "server_vad",
         },
+        input_audio_transcription: {
+          model: "whisper-1",
+        }
       },
     };
-
-    if (enableInputAudioTranscription) {
-      command.session.input_audio_transcription = {
-        model: "whisper-1",
-      };
-    }
-
     sendJsonMessage(command);
   };
 

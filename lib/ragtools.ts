@@ -79,13 +79,13 @@ async function _search_tool(
   console.error("Searching... ");
   const results = await searchClient.search(args.query, searchOptions);
   console.warn("Search Complete");
-  console.log(`Found results:-  `, results);
 
   let resultStr = "";
   for await (const result of results.results) {
     const doc = result.document;
     resultStr += `[${doc[identifierField]}]: ${doc[contentField]}\n-----\n`;
   }
+  console.log(`Found results:-  `, resultStr);
 
   return new ToolResult(resultStr, ToolResultDirection.TO_SERVER);
 }
