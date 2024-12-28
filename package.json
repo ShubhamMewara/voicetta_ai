@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node server.js",
-    "build": "next build",
+    "build": "npx next-ws-cli@latest patch && next build",
     "start": "node server.js"
   },
   "dependencies": {

@@ -105,6 +105,7 @@ export default function useRealTime({
     let message: Message;
     try {
       message = JSON.parse(event.data);
+      console.log("Received message:", message);
     } catch (e) {
       console.error("Failed to parse JSON message:", e);
       throw e;

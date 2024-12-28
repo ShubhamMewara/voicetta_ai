@@ -1,12 +1,8 @@
-import { ServerMessageType } from "rt-client";
-import WebSocket from "ws";
-import { Buffer } from "buffer";
-import next from "next";
-import { createServer } from "http";
+import { attachRagTools } from "@/lib/ragtools";
+import { RTMiddleTier } from "@/lib/rtmt";
 import { AzureKeyCredential } from "@azure/core-auth";
 import { DefaultAzureCredential, TokenCredential } from "@azure/identity";
-import { RTMiddleTier } from "@/lib/rtmt";
-import { attachRagTools } from "@/lib/ragtools";
+import WebSocket from "ws";
 
 export function SOCKET(
   client: WebSocket,

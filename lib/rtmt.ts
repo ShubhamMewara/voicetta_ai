@@ -216,15 +216,6 @@ class RTMiddleTier {
       process.env.AZURE_OPENAI_MODEL || "gpt-4o-realtime-preview";
     const azureEndpoint = `${aoaiEndpointOverride}/openai/realtime?api-key=${aoaiApiKeyOverride}&deployment=${aoaiModelOverride}&api-version=2024-10-01-preview`;
     const server_ws = new WebSocket(azureEndpoint);
-    // const server_ws = new WebSocket(
-    //   `${this.endpoint}/openai/deployments/${this.deployment}/stream?api-version=${this.api_version}`,
-    //   {
-    //     headers: {
-    //       Authorization: `Bearer ${accessToken}`,
-    //       "Content-Type": "application/json",
-    //     },
-    //   }
-    // );
 
     client_ws.on("message", async (msg) => {
       await this.processMessageToServer(msg, server_ws);

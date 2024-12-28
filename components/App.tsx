@@ -1,18 +1,16 @@
 "use client";
-import { useState } from "react";
-import { Mic, MicOff } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
-import useRealTime from "@/hooks/useRealtime";
-import useAudioRecorder from "@/hooks/useAudioRecorder";
 import useAudioPlayer from "@/hooks/useAudioPlayer";
-import Image from "next/image";
-
+import useAudioRecorder from "@/hooks/useAudioRecorder";
+import useRealTime from "@/hooks/useRealtime";
 import { GroundingFile, ToolResult } from "@/lib/types";
+import Image from "next/image";
+import { useState } from "react";
 
 export default function App() {
   const [isRecording, setIsRecording] = useState(false);
   const [groundingFiles, setGroundingFiles] = useState<GroundingFile[]>([]);
+  const [transcription, setTranscription] = useState<string | null>(null);
 
   const { startSession, addUserAudio, inputAudioBufferClear } = useRealTime({
     onWebSocketOpen: () => console.log("WebSocket connection opened"),
@@ -33,6 +31,9 @@ export default function App() {
       });
 
       setGroundingFiles((prev) => [...prev, ...files]);
+    },
+    onReceivedInputAudioTranscriptionCompleted: (message) => {
+      setTranscription((prev) => prev + "\n" + message.transcript);
     },
   });
 
@@ -99,13 +100,11 @@ export default function App() {
           <div
             className={`w-48 h-48 rounded-full flex items-center justify-center transition-all duration-300 ${
               isRecording ? "bg-red-700/20" : "bg-red-700/10"
-            }`}
-          >
+            }`}>
             <div
               className={`w-40 h-40 rounded-full flex items-center justify-center transition-all duration-300 ${
                 isRecording ? "bg-red-700/30" : "bg-red-700/20"
-              }`}
-            >
+              }`}>
               <Button
                 variant="ghost"
                 size="icon"
@@ -114,8 +113,7 @@ export default function App() {
                     ? "bg-white text-white pulse z-10 hover:bg-red-300"
                     : "bg-white text-red-400 hover:bg-red-700/40 z-0"
                 }`}
-                onClick={onToggleListening}
-              >
+                onClick={onToggleListening}>
                 <Image
                   src="/images/logo.png"
                   alt="Logo"
@@ -131,20 +129,19 @@ export default function App() {
               <div className="z-[-1] absolute inset-0 rounded-full bg-red-700/10 wave"></div>
               <div
                 className="absolute inset-0 rounded-full bg-red-700/10 wave"
-                style={{ animationDelay: "0.5s" }}
-              ></div>
+                style={{ animationDelay: "0.5s" }}></div>
             </>
           )}
           <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
             <Button
               variant="outline"
-              className="text-red-400 bg-red-700/10 hover:bg-red-700/20 cursor-default transition-all duration-300 hover:scale-105 hover:text-red-200"
-            >
+              className="text-red-400 bg-red-700/10 hover:bg-red-700/20 cursor-default transition-all duration-300 hover:scale-105 hover:text-red-200">
               {isRecording ? "Stop Listening" : "Give it a try!"}
             </Button>
           </div>
         </div>
       </div>
+      {transcription}
       {groundingFiles.length > 0 && (
         <div>
           <h2>Grounding Files</h2>

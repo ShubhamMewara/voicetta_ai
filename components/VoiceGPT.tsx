@@ -200,13 +200,11 @@ function RealtimeVoiceTranscription() {
           <div
             className={`w-48 h-48 rounded-full flex items-center justify-center transition-all duration-300 ${
               isListening ? "bg-[#da2d2e]/40" : "bg-[#da2d2e]/50"
-            }`}
-          >
+            }`}>
             <div
               className={`w-40 h-40 rounded-full flex items-center justify-center transition-all duration-300 ${
                 isListening ? "bg-[#da2d2e]" : "bg-[#da2d2e]"
-              }`}
-            >
+              }`}>
               <Button
                 variant="ghost"
                 size="icon"
@@ -215,13 +213,12 @@ function RealtimeVoiceTranscription() {
                     ? " text-white pulse z-10 bg-white"
                     : "bg-white text-red-400 z-0"
                 }`}
-                onClick={handleMicClick}
-              >
+                onClick={handleMicClick}>
                 <Image
-                src="/images/logo.png"
-                alt="Logo"
-                width={30}
-                height={30}
+                  src="/images/logo.png"
+                  alt="Logo"
+                  width={30}
+                  height={30}
                 />
                 <span className="sr-only">Toggle microphone</span>
               </Button>
@@ -232,15 +229,13 @@ function RealtimeVoiceTranscription() {
               <div className="z-[-1] absolute inset-0 rounded-full bg-red-700/10 wave"></div>
               <div
                 className="absolute inset-0 rounded-full bg-red-700/10 wave"
-                style={{ animationDelay: "0.5s" }}
-              ></div>
+                style={{ animationDelay: "0.5s" }}></div>
             </>
           )}
           <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
             <Button
               variant="outline"
-              className="text-white bg-[#da2d2e]/50 hover:bg-[#da2d2e]/50 cursor-default transition-all duration-300 hover:scale-105 hover:text-red-200"
-            >
+              className="text-white bg-[#da2d2e]/50 hover:bg-[#da2d2e]/50 cursor-default transition-all duration-300 hover:scale-105 hover:text-red-200">
               {formState === formStates.READY_TO_START && "Give it a try!"}
               {formState === formStates.WORKING && "Connecting..."}
               {formState === formStates.READY_TO_STOP && "Stop Listening"}
@@ -248,6 +243,7 @@ function RealtimeVoiceTranscription() {
           </div>
         </div>
       </div>
+      {userText}
     </>
   );
 }
